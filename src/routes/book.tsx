@@ -7,14 +7,16 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { fleet } from "@/data/fleet";
 import { BRAND, locations, whatsappLink } from "@/data/site";
 
-type BookSearch = { pickup?: string; start?: string; end?: string; vehicle?: string };
+type BookSearch = { pickup: string; start: string; end: string; vehicle: string };
+
+const str = (v: unknown) => (typeof v === "string" ? v : "");
 
 export const Route = createFileRoute("/book")({
   validateSearch: (search: Record<string, unknown>): BookSearch => ({
-    pickup: typeof search.pickup === "string" ? search.pickup : undefined,
-    start: typeof search.start === "string" ? search.start : undefined,
-    end: typeof search.end === "string" ? search.end : undefined,
-    vehicle: typeof search.vehicle === "string" ? search.vehicle : undefined,
+    pickup: str(search["pickup"]),
+    start: str(search["start"]),
+    end: str(search["end"]),
+    vehicle: str(search["vehicle"]),
   }),
   head: () => ({
     meta: [
