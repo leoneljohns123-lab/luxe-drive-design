@@ -5,17 +5,18 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { WhatsAppFab } from "@/components/site/WhatsAppButton";
 import { VehicleCard } from "@/components/site/VehicleCard";
 import { fleet } from "@/data/fleet";
+import { BRAND } from "@/data/site";
 
 export const Route = createFileRoute("/fleet/")({
   head: () => ({
     meta: [
-      { title: "Our Fleet — Luxury Sedans, SUVs & 4x4s | Aurum Drive" },
+      { title: `Our Fleet — Luxury Sedans, SUVs & 4x4s | ${BRAND.name}` },
       {
         name: "description",
         content:
-          "Browse the Aurum Drive fleet: executive sedans, seven-seat SUVs, electric grand tourers, group vans and safari-ready 4x4s with daily rates.",
+          `Browse the ${BRAND.name} fleet: executive sedans, seven-seat SUVs, electric grand tourers, group vans and safari-ready 4x4s with daily rates.`,
       },
-      { property: "og:title", content: "Our Fleet — Luxury Sedans, SUVs & 4x4s | Aurum Drive" },
+      { property: "og:title", content: `Our Fleet — Luxury Sedans, SUVs & 4x4s | ${BRAND.name}` },
       {
         property: "og:description",
         content: "Executive sedans, SUVs, electric tourers, group vans and expedition 4x4s.",

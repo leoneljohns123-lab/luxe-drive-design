@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { WhatsAppFab } from "@/components/site/WhatsAppButton";
 import { getVehicle, whatsappLink } from "@/data/fleet";
+import { BRAND } from "@/data/site";
 
 export const Route = createFileRoute("/fleet/$slug")({
   loader: ({ params }) => {
@@ -15,11 +16,11 @@ export const Route = createFileRoute("/fleet/$slug")({
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [{ title: "Vehicle not found | Aurum Drive" }, { name: "robots", content: "noindex" }],
+        meta: [{ title: `Vehicle not found | ${BRAND.name}` }, { name: "robots", content: "noindex" }],
       };
     }
     const { vehicle } = loaderData;
-    const title = `${vehicle.name} — Hire from $${vehicle.pricePerDay}/day | Aurum Drive`;
+    const title = `${vehicle.name} — Hire from ${vehicle.pricePerDay}/day | ${BRAND.name}`;
     return {
       meta: [
         { title },
@@ -134,7 +135,7 @@ function VehicleDetail() {
                 <Button asChild variant="whatsapp" size="lg">
                   <a
                     href={whatsappLink(
-                      `Hello Aurum Drive, I'd like to book the ${vehicle.name} ($${vehicle.pricePerDay}/day).`,
+                      `Hello ${BRAND.name}, I'd like to book the ${vehicle.name} (${vehicle.pricePerDay}/day).`,
                     )}
                     target="_blank"
                     rel="noreferrer noopener"

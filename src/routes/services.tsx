@@ -13,19 +13,20 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { WhatsAppFab } from "@/components/site/WhatsAppButton";
 import { services } from "@/data/fleet";
+import { BRAND } from "@/data/site";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — Airport Transfers, Chauffeurs & Corporate Hire | Aurum Drive" },
+      { title: `Services — Airport Transfers, Chauffeurs & Corporate Hire | ${BRAND.name}` },
       {
         name: "description",
         content:
-          "Airport transfers, chauffeur hire, corporate accounts, wedding cars, long-term leasing and safari expeditions from Aurum Drive.",
+          `Airport transfers, chauffeur hire, corporate accounts, wedding cars, long-term leasing and safari expeditions from ${BRAND.name}.`,
       },
       {
         property: "og:title",
-        content: "Services — Airport Transfers, Chauffeurs & Corporate Hire | Aurum Drive",
+        content: `Services — Airport Transfers, Chauffeurs & Corporate Hire | ${BRAND.name}`,
       },
       {
         property: "og:description",
@@ -104,7 +105,7 @@ function ServicesPage() {
         </section>
       </main>
       <SiteFooter />
-      <WhatsAppFab message="Hello Aurum Drive, I'd like to ask about your services." />
+      <WhatsAppFab message={`Hello ${BRAND.name}, I'd like to ask about your services.`} />
     </div>
   );
 }

@@ -8,17 +8,18 @@ import { WhatsAppFab } from "@/components/site/WhatsAppButton";
 import { SearchBar } from "@/components/site/SearchBar";
 import { VehicleCard } from "@/components/site/VehicleCard";
 import { fleet, reviews, services } from "@/data/fleet";
+import { BRAND } from "@/data/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aurum Drive — Premium Car Hire & Luxury Vehicle Rental" },
+      { title: `${BRAND.name} — Premium Car Hire & Luxury Vehicle Rental` },
       {
         name: "description",
         content:
           "Hire luxury sedans, SUVs, 4x4s and group vans with 24/7 delivery, transparent daily rates and instant WhatsApp booking.",
       },
-      { property: "og:title", content: "Aurum Drive — Premium Car Hire & Luxury Vehicle Rental" },
+      { property: "og:title", content: `${BRAND.name} — Premium Car Hire & Luxury Vehicle Rental` },
       {
         property: "og:description",
         content:
@@ -60,7 +61,7 @@ function Home() {
                 you intended.
               </h1>
               <p className="mt-5 max-w-lg text-base leading-relaxed text-muted-foreground sm:text-lg">
-                A meticulously maintained fleet, delivered to your door across Kenya. Book in minutes,
+                A meticulously maintained fleet, delivered to your door across Kenya and Germany. Book in minutes,
                 drive the same day.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
