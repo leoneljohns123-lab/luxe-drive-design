@@ -115,42 +115,7 @@ export const fleet: Vehicle[] = [
 
 export const getVehicle = (slug: string) => fleet.find((v) => v.slug === slug);
 
-export const WHATSAPP_NUMBER = "254700123456";
-
-export function whatsappLink(message: string) {
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-}
-
-export const locations = [
-  {
-    city: "Nairobi",
-    label: "Westlands Flagship",
-    address: "Muthithi Road, Westlands",
-    hours: "Open 24 hours",
-    note: "Flagship showroom and full fleet availability.",
-  },
-  {
-    city: "Nairobi",
-    label: "JKIA Airport Desk",
-    address: "Terminal 1A, Arrivals",
-    hours: "05:00 – 23:30 daily",
-    note: "Meet-and-greet delivery straight to arrivals.",
-  },
-  {
-    city: "Mombasa",
-    label: "Nyali Coast Branch",
-    address: "Links Road, Nyali",
-    hours: "07:00 – 21:00 daily",
-    note: "Coastal fleet with convertible and 4x4 focus.",
-  },
-  {
-    city: "Kisumu",
-    label: "Lakeside Depot",
-    address: "Oginga Odinga Street",
-    hours: "07:00 – 19:00 daily",
-    note: "Regional hub for long-distance and safari hires.",
-  },
-];
+export { whatsappLink, locations } from "./site";
 
 export const reviews = [
   {
