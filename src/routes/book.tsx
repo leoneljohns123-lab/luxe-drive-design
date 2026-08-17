@@ -7,7 +7,12 @@ import { SiteFooter } from "@/components/site/SiteFooter";
 import { fleet } from "@/data/fleet";
 import { BRAND, locations, whatsappLink } from "@/data/site";
 
-type BookSearch = { pickup: string; start: string; end: string; vehicle: string };
+type BookSearch = {
+  pickup?: string | undefined;
+  start?: string | undefined;
+  end?: string | undefined;
+  vehicle?: string | undefined;
+};
 
 const str = (v: unknown) => (typeof v === "string" ? v : "");
 
