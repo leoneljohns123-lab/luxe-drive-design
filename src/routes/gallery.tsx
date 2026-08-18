@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { ChatWidget } from "@/components/site/ChatWidget";
 import hero from "@/assets/hero.jpg";
 import sedan from "@/assets/car-sedan.jpg";
 import suv from "@/assets/car-suv.jpg";
@@ -87,7 +86,6 @@ function GalleryPage() {
         </div>
       </main>
       <SiteFooter />
-      <ChatWidget />
     </div>
   );
 }

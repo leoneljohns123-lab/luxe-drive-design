@@ -4,7 +4,6 @@ import heroImage from "@/assets/hero.jpg";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { WhatsAppFab } from "@/components/site/WhatsAppButton";
 import { SearchBar } from "@/components/site/SearchBar";
 import { VehicleCard } from "@/components/site/VehicleCard";
 import { fleet, reviews, services } from "@/data/fleet";
@@ -183,7 +182,6 @@ function Home() {
       </main>
 
       <SiteFooter />
-      <WhatsAppFab />
     </div>
   );
 }

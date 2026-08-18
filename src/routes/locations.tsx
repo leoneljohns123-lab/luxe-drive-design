@@ -4,7 +4,6 @@ import { Clock, MapPin, MessageCircle, Plane } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { ChatWidget } from "@/components/site/ChatWidget";
 import { locations, whatsappLink } from "@/data/site";
 
 export const Route = createFileRoute("/locations")({
@@ -101,7 +100,6 @@ function LocationsPage() {
         </div>
       </main>
       <SiteFooter />
-      <ChatWidget />
     </div>
   );
 }

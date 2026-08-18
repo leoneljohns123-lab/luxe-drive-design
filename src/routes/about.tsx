@@ -3,7 +3,6 @@ import { Globe2, HeartHandshake, ShieldCheck, Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { ChatWidget } from "@/components/site/ChatWidget";
 import heroImage from "@/assets/hero.jpg";
 import { BRAND } from "@/data/site";
 
@@ -127,7 +126,6 @@ function AboutPage() {
         </section>
       </main>
       <SiteFooter />
-      <ChatWidget />
     </div>
   );
 }
