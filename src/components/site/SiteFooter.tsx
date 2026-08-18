@@ -1,33 +1,44 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
+import logo from "@/assets/logo.png.asset.json";
 import { BRAND, CONTACT } from "@/data/site";
+
+const explore = [
+  { to: "/fleet", label: "Our fleet" },
+  { to: "/services", label: "Services" },
+  { to: "/gallery", label: "Gallery" },
+  { to: "/locations", label: "Locations" },
+  { to: "/about", label: "About us" },
+  { to: "/contact", label: "Contact" },
+  { to: "/book", label: "Start a booking" },
+] as const;
 
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-surface">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1.1fr] lg:px-8">
         <div className="min-w-0">
-          <div className="flex items-center gap-2.5">
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-gold text-primary-foreground font-display text-sm font-bold">
-              DR
-            </span>
-            <span className="font-display text-base font-bold">{BRAND.name}</span>
-          </div>
+          <img
+            src={logo.url}
+            alt={`${BRAND.name} — ${BRAND.tagline}`}
+            className="h-12 w-auto max-w-[260px] object-contain"
+          />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-            Premium vehicle hire across Kenya and Germany with transparent pricing, meticulous preparation and around-the-clock support. Delivered wherever you are.
+            Premium car hire and safari transport across Kenya and Germany — transparent pricing,
+            meticulous preparation and around-the-clock support, delivered wherever you are.
           </p>
         </div>
 
         <div>
           <h3 className="text-sm font-semibold">Explore</h3>
           <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
-            <li><Link to="/fleet" className="hover:text-gold">Our fleet</Link></li>
-            <li><Link to="/services" className="hover:text-gold">Services</Link></li>
-            <li><Link to="/locations" className="hover:text-gold">Locations</Link></li>
-            <li><Link to="/gallery" className="hover:text-gold">Gallery</Link></li>
-            <li><Link to="/about" className="hover:text-gold">About</Link></li>
-            <li><Link to="/contact" className="hover:text-gold">Contact</Link></li>
-            <li><Link to="/book" className="hover:text-gold">Start a booking</Link></li>
+            {explore.map((e) => (
+              <li key={e.to}>
+                <Link to={e.to} className="hover:text-gold">
+                  {e.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -37,12 +48,16 @@ export function SiteFooter() {
             {CONTACT.phones.map((p) => (
               <li key={p.href} className="flex items-start gap-2">
                 <Phone className="mt-0.5 size-4 shrink-0 text-gold" />
-                <a href={`tel:${p.href}`} className="hover:text-gold">{p.number}</a>
+                <a href={`tel:${p.href}`} className="hover:text-gold">
+                  {p.number}
+                </a>
               </li>
             ))}
             <li className="flex items-start gap-2">
               <Mail className="mt-0.5 size-4 shrink-0 text-gold" />
-              <a href={`mailto:${CONTACT.email}`} className="break-all hover:text-gold">{CONTACT.email}</a>
+              <a href={`mailto:${CONTACT.email}`} className="break-all hover:text-gold">
+                {CONTACT.email}
+              </a>
             </li>
             <li className="flex items-start gap-2">
               <MapPin className="mt-0.5 size-4 shrink-0 text-gold" />
