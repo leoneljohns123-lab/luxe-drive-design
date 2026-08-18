@@ -2,7 +2,6 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { WhatsAppFab } from "@/components/site/WhatsAppButton";
 import { VehicleCard } from "@/components/site/VehicleCard";
 import { fleet } from "@/data/fleet";
 import { BRAND } from "@/data/site";
@@ -68,7 +67,6 @@ function FleetPage() {
         </div>
       </main>
       <SiteFooter />
-      <WhatsAppFab />
     </div>
   );
 }

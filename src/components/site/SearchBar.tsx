@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { CalendarDays, MapPin, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { locations } from "@/data/fleet";
+import { locations } from "@/data/site";
 
 const fieldClass =
   "h-11 w-full rounded-xl border border-border bg-background px-3 text-sm text-foreground outline-none transition-colors focus:border-gold/60";
@@ -10,7 +10,7 @@ const fieldClass =
 export function SearchBar() {
   const navigate = useNavigate();
   const today = new Date().toISOString().slice(0, 10);
-  const [pickup, setPickup] = useState(locations[0].label);
+  const [pickup, setPickup] = useState(locations[0]?.label ?? "");
   const [start, setStart] = useState(today);
   const [end, setEnd] = useState(today);
 
@@ -29,7 +29,7 @@ export function SearchBar() {
         <select className={fieldClass} value={pickup} onChange={(e) => setPickup(e.target.value)}>
           {locations.map((l) => (
             <option key={l.label} value={l.label}>
-              {l.city} — {l.label}
+              {l.country} · {l.city} — {l.label}
             </option>
           ))}
         </select>

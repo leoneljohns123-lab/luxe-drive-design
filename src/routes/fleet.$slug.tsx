@@ -3,7 +3,6 @@ import { ArrowLeft, Briefcase, Check, Fuel, Gauge, MessageCircle, Users } from "
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { WhatsAppFab } from "@/components/site/WhatsAppButton";
 import { getVehicle, whatsappLink } from "@/data/fleet";
 import { BRAND } from "@/data/site";
 
@@ -153,7 +152,6 @@ function VehicleDetail() {
         </div>
       </main>
       <SiteFooter />
-      <WhatsAppFab message={`Hello, is the ${vehicle.name} available?`} />
     </div>
   );
 }
