@@ -1,30 +1,55 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, BadgeCheck, Compass, HeartHandshake, ShieldCheck } from "lucide-react";
-import logo from "@/assets/image copy 2.png";
+import { Globe2, HeartHandshake, ShieldCheck, Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { ChatWidget } from "@/components/site/ChatWidget";
+import heroImage from "@/assets/hero.jpg";
 import { BRAND } from "@/data/site";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: `About ${BRAND.name} — Kenya & Germany Car Hire` },
+      { title: "About Dama Royal Safaris — Car Hire in Kenya & Germany" },
       {
         name: "description",
         content:
-          "Discover the people, standards and personal service behind Dama Royal Safaris in Kenya and Germany.",
+          "A family-run car hire and safari company operating between Kenya and Germany, built on comfort, punctuality and honest pricing.",
       },
+      { property: "og:title", content: "About Dama Royal Safaris" },
+      {
+        property: "og:description",
+        content: "Two countries, one standard of service. Meet the team behind the fleet.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/about" }],
   }),
   component: AboutPage,
 });
 
 const values = [
-  { icon: ShieldCheck, title: "Prepared with care", text: "Every vehicle is checked, cleaned and ready before it reaches you." },
-  { icon: HeartHandshake, title: "Personal service", text: "You speak with the same real team from first enquiry to key handover." },
-  { icon: Compass, title: "Made for the journey", text: "From airport transfers to safari roads, we match the vehicle to your plans." },
-  { icon: BadgeCheck, title: "Clear from the start", text: "Straightforward rates, practical advice and no surprise additions." },
+  {
+    icon: ShieldCheck,
+    title: "Safety first",
+    text: "Every vehicle is serviced on schedule, fully insured and checked before each handover.",
+  },
+  {
+    icon: Globe2,
+    title: "Two homes",
+    text: "Desks in Kenya and Germany mean familiar service whichever country you land in.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Honest pricing",
+    text: "One clear rate. Taxes, mileage and cleaning are included — no surprises at return.",
+  },
+  {
+    icon: Sparkle,
+    title: "Comfort as standard",
+    text: "Our name is a promise: where comfort meets the road, on tarmac or in the bush.",
+  },
 ];
 
 function AboutPage() {
@@ -32,51 +57,77 @@ function AboutPage() {
     <div className="min-h-screen">
       <SiteHeader />
       <main>
-        <section className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8 lg:py-24">
-          <div>
-            <p className="eyebrow">About {BRAND.name}</p>
-            <h1 className="mt-3 max-w-2xl font-display text-4xl font-bold sm:text-6xl">The road feels better when everything is taken care of.</h1>
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              {BRAND.name} brings considered car hire to Kenya and Germany. We combine a carefully maintained fleet with warm, direct support, so your journey starts before you turn the key.
+        <section className="relative isolate">
+          <img
+            src={heroImage}
+            alt="Luxury vehicle on an open road at dusk"
+            className="absolute inset-0 -z-10 h-full w-full object-cover"
+          />
+          <div className="hero-veil absolute inset-0 -z-10" />
+          <div className="mx-auto max-w-7xl px-4 pb-14 pt-24 sm:px-6 sm:pt-32 lg:px-8">
+            <p className="eyebrow">About us</p>
+            <h1 className="mt-3 max-w-3xl font-display text-4xl font-bold leading-tight sm:text-6xl">
+              Where comfort meets the road
+            </h1>
+            <p className="mt-5 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
+              {BRAND.name} began with a single 4x4 and a simple idea: travellers deserve a vehicle
+              that arrives clean, on time and ready for the journey ahead — whether that journey
+              starts at Jomo Kenyatta International or Frankfurt Airport.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild variant="gold" size="lg"><Link to="/fleet">Explore the fleet <ArrowRight /></Link></Button>
-              <Button asChild variant="outline" size="lg"><Link to="/contact">Talk to our team</Link></Button>
-            </div>
-          </div>
-          <div className="surface-card overflow-hidden p-5 sm:p-8">
-            <div className="rounded-2xl bg-black/20 p-5 sm:p-8">
-              <img src={logo} alt={`${BRAND.name} logo`} className="mx-auto w-full max-w-md object-contain" />
-            </div>
-            <p className="mt-5 text-center text-xs uppercase tracking-[0.24em] text-gold">Where comfort meets the road</p>
           </div>
         </section>
 
-        <section className="border-y border-border bg-surface">
-          <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-            <p className="eyebrow">Our standards</p>
-            <h2 className="mt-3 max-w-2xl font-display text-3xl font-bold sm:text-4xl">Small details make a big difference.</h2>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {values.map((value) => (
-                <div key={value.title} className="rounded-2xl border border-border bg-background p-6">
-                  <value.icon className="size-6 text-gold" />
-                  <h3 className="mt-5 font-display text-base font-semibold">{value.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{value.text}</p>
-                </div>
-              ))}
+        <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+          <div className="grid gap-10 md:grid-cols-2">
+            <div>
+              <h2 className="font-display text-2xl font-bold sm:text-3xl">Our story</h2>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                Founded by a Kenyan-German family who spent years shuttling between Nairobi and the
+                Rhine, we know both sides of the journey: the visitor arriving for a first safari,
+                and the diaspora traveller coming home for a season.
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                Today we operate a curated fleet across both countries — executive sedans and
+                estate cars in Germany, safari-ready 4x4s, group vans and city runabouts in Kenya —
+                with the same team answering the phone in either time zone.
+              </p>
+            </div>
+            <div>
+              <h2 className="font-display text-2xl font-bold sm:text-3xl">How we work</h2>
+              <ul className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
+                <li>You send dates and a pick-up point — by form, phone or WhatsApp.</li>
+                <li>We confirm availability and a final, all-inclusive quote in minutes.</li>
+                <li>The vehicle is prepared, fuelled and delivered to you, or waiting on arrival.</li>
+                <li>Support stays reachable for the whole hire, including roadside assistance.</li>
+              </ul>
             </div>
           </div>
-        </section>
 
-        <section className="mx-auto max-w-4xl px-4 py-16 text-center sm:px-6 lg:px-8">
-          <p className="eyebrow">Two countries, one standard</p>
-          <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl">From the terminal to the open road.</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Whether you are landing in Nairobi, planning a coastal escape, arriving in Frankfurt for business or setting off through the Alps, our team makes collection and delivery simple.
-          </p>
+          <div className="mt-12 grid gap-4 sm:grid-cols-2">
+            {values.map((v) => (
+              <div key={v.title} className="surface-card p-6">
+                <v.icon className="size-6 text-gold" />
+                <h3 className="mt-4 font-display text-base font-semibold">{v.title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{v.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="surface-card mt-12 flex flex-wrap items-center justify-between gap-4 p-8">
+            <p className="font-display text-xl font-bold">Planning a trip with us?</p>
+            <div className="flex gap-3">
+              <Button asChild variant="gold">
+                <Link to="/book">Start booking</Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link to="/contact">Contact us</Link>
+              </Button>
+            </div>
+          </div>
         </section>
       </main>
       <SiteFooter />
+      <ChatWidget />
     </div>
   );
 }
