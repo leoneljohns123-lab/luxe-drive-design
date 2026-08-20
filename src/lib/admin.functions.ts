@@ -40,27 +40,37 @@ export const getDashboardStats = createServerFn({ method: "GET" })
     const s = context.supabase;
     await assertAdmin(s);
 
-    const counts = async (
-      table: "vehicles" | "bookings" | "lease_applications" | "driver_applications",
-      filter?: (q: ReturnType<typeof s.from>) => unknown,
-    ) => {
-      let q = s.from(table).select("id", { count: "exact", head: true });
-      if (filter) q = filter(q as never) as typeof q;
-      const { count } = await q;
-      return count ?? 0;
-    };
+    const head = { count: "exact" as const, head: true };
 
-    const [vehicles, available, bookings, pendingBookings, leases, pendingLeases, drivers, pendingDrivers] =
-      await Promise.all([
-        counts("vehicles", (q) => (q as never as typeof q).eq("archived", false)),
-        counts("vehicles", (q) => (q as never as typeof q).eq("status", "available").eq("archived", false)),
-        counts("bookings"),
-        counts("bookings", (q) => (q as never as typeof q).eq("status", "pending")),
-        counts("lease_applications"),
-        counts("lease_applications", (q) => (q as never as typeof q).eq("status", "pending")),
-        counts("driver_applications"),
-        counts("driver_applications", (q) => (q as never as typeof q).eq("status", "pending")),
-      ]);
+    const [
+      vehiclesRes,
+      availableRes,
+      bookingsRes,
+      pendingBookingsRes,
+      leasesRes,
+      pendingLeasesRes,
+      driversRes,
+      pendingDriversRes,
+    ] = await Promise.all([
+      s.from("vehicles").select("id", head).eq("archived", false),
+      s.from("vehicles").select("id", head).eq("archived", false).eq("status", "available"),
+      s.from("bookings").select("id", head),
+      s.from("bookings").select("id", head).eq("status", "pending"),
+      s.from("lease_applications").select("id", head),
+      s.from("lease_applications").select("id", head).eq("status", "pending"),
+      s.from("driver_applications").select("id", head),
+      s.from("driver_applications").select("id", head).eq("status", "pending"),
+    ]);
+
+    const vehicles = vehiclesRes.count ?? 0;
+    const available = availableRes.count ?? 0;
+    const bookings = bookingsRes.count ?? 0;
+    const pendingBookings = pendingBookingsRes.count ?? 0;
+    const leases = leasesRes.count ?? 0;
+    const pendingLeases = pendingLeasesRes.count ?? 0;
+    const drivers = driversRes.count ?? 0;
+    const pendingDrivers = pendingDriversRes.count ?? 0;
+
 
     const { data: recentBookings } = await s
       .from("bookings")
