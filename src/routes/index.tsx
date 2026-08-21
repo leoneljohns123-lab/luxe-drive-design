@@ -53,7 +53,11 @@ const promises = [
 ];
 
 function Home() {
+  const { data: fleet } = useSuspenseQuery(vehiclesQuery);
+  const featured = [...fleet].sort((a, b) => Number(b.featured) - Number(a.featured)).slice(0, 3);
+
   return (
+
     <div className="min-h-screen">
       <SiteHeader />
 
