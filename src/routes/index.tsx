@@ -128,11 +128,26 @@ function Home() {
           </div>
 
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {fleet.slice(0, 3).map((v) => (
+            {featured.map((v) => (
               <VehicleCard key={v.slug} vehicle={v} />
             ))}
           </div>
+
+          <div className="mt-10">
+            <StatusKey compact />
+          </div>
         </section>
+
+        <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
+          <p className="eyebrow">Three ways to ride with us</p>
+          <h2 className="mt-3 font-display text-3xl font-bold sm:text-4xl">
+            Book, lease or drive
+          </h2>
+          <div className="mt-8">
+            <CtaTrio />
+          </div>
+        </section>
+
 
         <section className="border-y border-border bg-surface">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
