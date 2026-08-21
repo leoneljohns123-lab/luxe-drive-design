@@ -8,11 +8,13 @@ import { CONTACT } from "@/data/site";
 const nav = [
   { to: "/fleet", label: "Fleet" },
   { to: "/services", label: "Services" },
-  { to: "/gallery", label: "Gallery" },
+  { to: "/lease", label: "Lease your car" },
+  { to: "/drive", label: "Become a driver" },
   { to: "/locations", label: "Locations" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;
+
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);

@@ -11,7 +11,11 @@ const explore = [
   { to: "/about", label: "About us" },
   { to: "/contact", label: "Contact" },
   { to: "/book", label: "Start a booking" },
+  { to: "/lease", label: "Lease your car" },
+  { to: "/drive", label: "Become a driver" },
+  { to: "/track", label: "Track an application" },
 ] as const;
+
 
 export function SiteFooter() {
   return (

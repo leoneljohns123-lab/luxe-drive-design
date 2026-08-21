@@ -13,9 +13,12 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DriveRouteImport } from './routes/drive'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as LeaseRouteImport } from './routes/lease'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as TrackRouteImport } from './routes/track'
 import { Route as FleetIndexRouteImport } from './routes/fleet.index'
 import { Route as FleetSlugRouteImport } from './routes/fleet.$slug'
 
@@ -39,9 +42,19 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DriveRoute = DriveRouteImport.update({
+  id: '/drive',
+  path: '/drive',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaseRoute = LeaseRouteImport.update({
+  id: '/lease',
+  path: '/lease',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LocationsRoute = LocationsRouteImport.update({
@@ -52,6 +65,11 @@ const LocationsRoute = LocationsRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TrackRoute = TrackRouteImport.update({
+  id: '/track',
+  path: '/track',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FleetIndexRoute = FleetIndexRouteImport.update({
@@ -70,9 +88,12 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
+  '/drive': typeof DriveRoute
   '/gallery': typeof GalleryRoute
+  '/lease': typeof LeaseRoute
   '/locations': typeof LocationsRoute
   '/services': typeof ServicesRoute
+  '/track': typeof TrackRoute
   '/fleet/$slug': typeof FleetSlugRoute
   '/fleet/': typeof FleetIndexRoute
 }
@@ -81,9 +102,12 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
+  '/drive': typeof DriveRoute
   '/gallery': typeof GalleryRoute
+  '/lease': typeof LeaseRoute
   '/locations': typeof LocationsRoute
   '/services': typeof ServicesRoute
+  '/track': typeof TrackRoute
   '/fleet/$slug': typeof FleetSlugRoute
   '/fleet': typeof FleetIndexRoute
 }
@@ -93,9 +117,12 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/book': typeof BookRoute
   '/contact': typeof ContactRoute
+  '/drive': typeof DriveRoute
   '/gallery': typeof GalleryRoute
+  '/lease': typeof LeaseRoute
   '/locations': typeof LocationsRoute
   '/services': typeof ServicesRoute
+  '/track': typeof TrackRoute
   '/fleet/$slug': typeof FleetSlugRoute
   '/fleet/': typeof FleetIndexRoute
 }
@@ -106,9 +133,12 @@ export interface FileRouteTypes {
     | '/about'
     | '/book'
     | '/contact'
+    | '/drive'
     | '/gallery'
+    | '/lease'
     | '/locations'
     | '/services'
+    | '/track'
     | '/fleet/$slug'
     | '/fleet/'
   fileRoutesByTo: FileRoutesByTo
@@ -117,9 +147,12 @@ export interface FileRouteTypes {
     | '/about'
     | '/book'
     | '/contact'
+    | '/drive'
     | '/gallery'
+    | '/lease'
     | '/locations'
     | '/services'
+    | '/track'
     | '/fleet/$slug'
     | '/fleet'
   id:
@@ -128,9 +161,12 @@ export interface FileRouteTypes {
     | '/about'
     | '/book'
     | '/contact'
+    | '/drive'
     | '/gallery'
+    | '/lease'
     | '/locations'
     | '/services'
+    | '/track'
     | '/fleet/$slug'
     | '/fleet/'
   fileRoutesById: FileRoutesById
@@ -140,9 +176,12 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   BookRoute: typeof BookRoute
   ContactRoute: typeof ContactRoute
+  DriveRoute: typeof DriveRoute
   GalleryRoute: typeof GalleryRoute
+  LeaseRoute: typeof LeaseRoute
   LocationsRoute: typeof LocationsRoute
   ServicesRoute: typeof ServicesRoute
+  TrackRoute: typeof TrackRoute
   FleetSlugRoute: typeof FleetSlugRoute
   FleetIndexRoute: typeof FleetIndexRoute
 }
@@ -177,11 +216,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/drive': {
+      id: '/drive'
+      path: '/drive'
+      fullPath: '/drive'
+      preLoaderRoute: typeof DriveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gallery': {
       id: '/gallery'
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lease': {
+      id: '/lease'
+      path: '/lease'
+      fullPath: '/lease'
+      preLoaderRoute: typeof LeaseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/locations': {
@@ -196,6 +249,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/track': {
+      id: '/track'
+      path: '/track'
+      fullPath: '/track'
+      preLoaderRoute: typeof TrackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/fleet/': {
@@ -220,9 +280,12 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   BookRoute: BookRoute,
   ContactRoute: ContactRoute,
+  DriveRoute: DriveRoute,
   GalleryRoute: GalleryRoute,
+  LeaseRoute: LeaseRoute,
   LocationsRoute: LocationsRoute,
   ServicesRoute: ServicesRoute,
+  TrackRoute: TrackRoute,
   FleetSlugRoute: FleetSlugRoute,
   FleetIndexRoute: FleetIndexRoute,
 }
