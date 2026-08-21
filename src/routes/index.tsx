@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { ArrowRight, BadgeCheck, Clock, Quote, ShieldCheck, Star } from "lucide-react";
 import heroImage from "@/assets/hero.jpg";
 import { Button } from "@/components/ui/button";
@@ -6,7 +7,10 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { SearchBar } from "@/components/site/SearchBar";
 import { VehicleCard } from "@/components/site/VehicleCard";
-import { fleet, reviews, services } from "@/data/fleet";
+import { CtaTrio } from "@/components/site/CtaTrio";
+import { StatusKey } from "@/components/site/StatusKey";
+import { vehiclesQuery } from "@/lib/vehicle-queries";
+import { reviews, services } from "@/data/fleet";
 import { BRAND } from "@/data/site";
 
 export const Route = createFileRoute("/")({
@@ -26,8 +30,21 @@ export const Route = createFileRoute("/")({
       },
     ],
   }),
+  loader: ({ context }) => {
+    void context.queryClient.ensureQueryData(vehiclesQuery);
+  },
+  errorComponent: ({ error }) => (
+    <div className="mx-auto max-w-3xl px-4 py-24 text-center" role="alert">
+      <h1 className="font-display text-2xl font-bold">Something went wrong</h1>
+      <p className="mt-2 text-sm text-muted-foreground">{error.message}</p>
+    </div>
+  ),
+  notFoundComponent: () => (
+    <div className="mx-auto max-w-3xl px-4 py-24 text-center">Page not found.</div>
+  ),
   component: Home,
 });
+
 
 const promises = [
   { icon: ShieldCheck, title: "Fully insured", text: "Comprehensive cover and 24/7 roadside assistance on every hire." },
